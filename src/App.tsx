@@ -11,30 +11,38 @@ import {
 } from "./components";
 import { Layout } from "antd";
 import { Route, Routes } from "react-router-dom";
-
+import { Helmet } from "react-helmet";
 function App() {
   return (
-    <div className="app">
-      <div className="navbar">
-        <Navbar />
-      </div>
-      <div className="main">
-        <Layout>
-          <div className="routes">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
-              <Route path="/crypto/:coinId" element={<CryptoDetails />} />
-              <Route path="/exchanges" element={<Exchanges />} />
-              <Route path="/news" element={<News />} />
-            </Routes>
+    <>
+      <Helmet>
+        <title>Cryptoverse Dashboard</title>
+      </Helmet>
+      <div className="app">
+        <div className="navbar">
+          <Navbar />
+        </div>
+        <div className="main">
+          <Layout>
+            <div className="routes">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route
+                  path="/cryptocurrencies"
+                  element={<Cryptocurrencies />}
+                />
+                <Route path="/crypto/:coinId" element={<CryptoDetails />} />
+                <Route path="/exchanges" element={<Exchanges />} />
+                <Route path="/news" element={<News />} />
+              </Routes>
+            </div>
+          </Layout>
+          <div className="footer">
+            <Footer />
           </div>
-        </Layout>
-        <div className="footer">
-          <Footer />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -34,7 +34,7 @@ function Cryptocurrencies({ simplified }: Props) {
       coin.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setCryptos(filteredData);
-  }, [cryptosList, searchTerm]);
+  }, [cryptosCoinsData, searchTerm]);
 
     if (isFetching) return <Loader />;
 
@@ -61,7 +61,7 @@ function Cryptocurrencies({ simplified }: Props) {
             <Link to={`/crypto/${currency.uuid}`}>
               <Card
                 title={`${currency.rank}. ${currency.name}`}
-                extra={<img className="crypto-image" src={currency.iconUrl} />}
+                extra={<img className="crypto-image" src={currency.iconUrl} alt=""/>}
                 hoverable
               >
                 <p>Price: {millify(currency.price)}</p>

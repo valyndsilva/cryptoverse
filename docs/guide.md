@@ -4,6 +4,7 @@
 npx create-react-app cryptoverse --template typescript
 cd cryptoverse
 code .
+npm install react-helmet
 ```
 
 ## To add TypeScript to an existing Create React App project, first install it:
