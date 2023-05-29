@@ -15,7 +15,7 @@ function News({ simplified }: Props) {
   const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
   const { data: cryptoNews } = useGetCryptoNewsQuery({
     newsCategory: newsCategory,
-    count: simplified ? 6 : 12,
+    count: simplified ? 8 : 15,
   });
   console.log(cryptoNews);
 
