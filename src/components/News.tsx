@@ -26,23 +26,29 @@ function News({ simplified }: Props) {
   return (
     <Row gutter={[24, 24]}>
       {!simplified && (
-        <Col span={24}>
-          <Select
-            showSearch
-            className="select-news"
-            placeholder="Select a Crypto"
-            onChange={(value) => setNewsCategory(value)}
-            optionFilterProp="children"
-            filterOption={(input, option: any) =>
-              option!.children!.toLowerCase().indexOf(input.toLowerCase()) >= 0
-            }
-          >
-            <Option value="Cryptocurrency">Cryptocurrency</Option>
-            {cryptosList?.data?.coins.map((crypto: any) => (
-              <Option value={crypto.name}>{crypto.name}</Option>
-            ))}
-          </Select>
-        </Col>
+        <>
+          <Title level={2} className="main-title">
+            Latest crypto news around the word
+          </Title>
+          <Col span={24}>
+            <Select
+              showSearch
+              className="select-news"
+              placeholder="Select a Crypto"
+              onChange={(value) => setNewsCategory(value)}
+              optionFilterProp="children"
+              filterOption={(input, option: any) =>
+                option!.children!.toLowerCase().indexOf(input.toLowerCase()) >=
+                0
+              }
+            >
+              <Option value="Cryptocurrency">Cryptocurrency</Option>
+              {cryptosList?.data?.coins.map((crypto: any) => (
+                <Option value={crypto.name}>{crypto.name}</Option>
+              ))}
+            </Select>
+          </Col>
+        </>
       )}
       {cryptoNews.value.map((news: any, i: number) => (
         <Col xs={24} sm={12} lg={12} xl={8} key={i}>

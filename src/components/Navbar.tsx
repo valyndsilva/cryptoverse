@@ -63,7 +63,7 @@ function Navbar() {
     <div className="nav-container">
       <div className="logo-container">
         <Avatar src={icon} size="large" />
-        <Typography.Title level={4} className="logo">
+        <Typography.Title level={5} className="logo">
           <Link to="/">Cryptoverse</Link>
         </Typography.Title>
         <Button

@@ -1,21 +1,15 @@
-import { Space, Typography } from "antd";
-import React from "react";
-import { Link } from "react-router-dom";
+import {Typography } from "antd";
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <>
       <Typography.Title
         level={5}
         style={{ color: "white", textAlign: "center" }}
       >
-        Cryptoverse. All Rights Reserved.{" "}
+        © {currentYear} Cryptoverse. All Rights Reserved.{" "}
       </Typography.Title>
-      <Space>
-        <Link to={"/"}>Home</Link>
-        <Link to={"/exchanges"}>Exchanges</Link>
-        <Link to={"/news"}>News</Link>
-      </Space>
     </>
   );
 }

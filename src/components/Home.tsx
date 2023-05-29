@@ -69,7 +69,7 @@ function Home() {
       {/* Cryptocurrencies */}
       <div className="home-heading-container">
         <Title level={2} className="home-title">
-          Top 10 Cryptocurrencies in the world
+          Top 12 Cryptocurrencies in the world
         </Title>
         <Title level={4} className="show-more">
           <Link to="/cryptocurrencies">Show More</Link>
@@ -84,6 +84,7 @@ function Home() {
           <Link to="/news">Show More</Link>
         </Title>
       </div>
+      {/* Latest News */}
       <News simplified />
     </>
   );

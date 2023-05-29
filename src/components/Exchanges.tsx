@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Table, Input } from "antd";
+import { Table, Input, Typography } from "antd";
 import Loader from "./Loader";
-import {
-  useGetExchangesQuery,
-} from "../services/coinGeckoApi";
+import { useGetExchangesQuery } from "../services/coinGeckoApi";
 
+const { Title } = Typography;
 export default function Exchanges() {
   const { data: exchangesList, isFetching } = useGetExchangesQuery({});
   console.log(exchangesList);
@@ -18,55 +17,59 @@ export default function Exchanges() {
     setExchanges(filteredData);
   }, [exchangesList, searchTerm]);
 
-    if (isFetching) return <Loader />;
+  if (isFetching) return <Loader />;
 
-
-const columns = [
-  {
-    title: "Rank",
-    dataIndex: "trust_score_rank",
-    key: "trust_score_rank",
-  },
-  {
-    title: "",
-    dataIndex: "image",
-    key: "image",
-    width: 50,
-    maxWidth: 50,
-    borderRadius: "50%",
-    render: (image: string) => <img src={`${image}`} alt="logo" />,
-  },
-  {
-    title: "Exchange Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Year Est.",
-    dataIndex: "year_established",
-    key: "year_established",
-  },
-  {
-    title: "24h Trade Volume",
-    dataIndex: "trade_volume_24h_btc",
-    key: "trade_volume_24h_btc",
-  },
-  {
-    title: "Trust Score",
-    dataIndex: "trust_score",
-    key: "trust_score",
-  },
-];
+  const columns = [
+    {
+      title: "Rank",
+      dataIndex: "trust_score_rank",
+      key: "trust_score_rank",
+    },
+    {
+      title: "",
+      dataIndex: "image",
+      key: "image",
+      width: 50,
+      maxWidth: 50,
+      borderRadius: "50%",
+      render: (image: string) => <img src={`${image}`} alt="logo" />,
+    },
+    {
+      title: "Exchange Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Year Est.",
+      dataIndex: "year_established",
+      key: "year_established",
+    },
+    {
+      title: "24h Trade Volume",
+      dataIndex: "trade_volume_24h_btc",
+      key: "trade_volume_24h_btc",
+    },
+    {
+      title: "Trust Score",
+      dataIndex: "trust_score",
+      key: "trust_score",
+    },
+  ];
 
   return (
     <>
-      { 
-        <div className="search-crypto">
-          <Input
-            placeholder="Search Exchanges"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
+      {
+        <>
+          <Title level={2} className="exchanges-title">
+            Top 100 Exhanges in the world
+          </Title>
+          <div className="search-crypto">
+            <Input
+              placeholder="Search Exchanges"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </>
       }
 
       <Table dataSource={exchanges} columns={columns} />

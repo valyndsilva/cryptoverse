@@ -19,9 +19,7 @@ function App() {
         <title>Cryptoverse Dashboard</title>
       </Helmet>
       <div className="app">
-        <div className="navbar">
-          <Navbar />
-        </div>
+        <Navbar />
         <div className="main">
           <Layout>
             <div className="routes">

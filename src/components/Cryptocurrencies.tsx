@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import millify from "millify";
 import { Link } from "react-router-dom";
-import { Card, Row, Col, Input } from "antd";
+import { Card, Row, Col, Input, Typography } from "antd";
 import { useGetCryptosQuery } from "../services/coinRankingApi";
 import Loader from "./Loader";
-
+const { Title } = Typography;
 interface Props {
   simplified?: boolean;
 }
@@ -36,20 +36,26 @@ function Cryptocurrencies({ simplified }: Props) {
     setCryptos(filteredData);
   }, [cryptosCoinsData, searchTerm]);
 
-    if (isFetching) return <Loader />;
+  if (isFetching) return <Loader />;
 
   return (
     <>
       {!simplified && (
-        <div className="search-crypto">
-          <Input
-            placeholder="Search Cryptocurrency"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
+        <>
+          <Title level={2} className="cryptocurrencies-title">
+            Top 100 Cryptocurrencies in the world
+          </Title>
+
+          <div className="search-crypto">
+            <Input
+              placeholder="Search Cryptocurrency"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </>
       )}
 
-      <Row gutter={[32, 32]} className="crypto-card-container">
+      <Row  gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map((currency: any) => (
           <Col
             xs={24}
@@ -61,7 +67,9 @@ function Cryptocurrencies({ simplified }: Props) {
             <Link to={`/crypto/${currency.uuid}`}>
               <Card
                 title={`${currency.rank}. ${currency.name}`}
-                extra={<img className="crypto-image" src={currency.iconUrl} alt=""/>}
+                extra={
+                  <img className="crypto-image" src={currency.iconUrl} alt="" />
+                }
                 hoverable
               >
                 <p>Price: {millify(currency.price)}</p>
